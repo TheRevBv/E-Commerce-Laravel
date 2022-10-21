@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carritos', function (Blueprint $table) {
-            $table->id('id_carrito');
-            $table->foreignId('id_user')->constrained('users');
-            $table->foreignId('id_producto')->constrained('productos');
+            $table->id();
+            $table->unsignedBigInteger('user_id', false);
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('producto_id', false);
+            $table->foreign('producto_id')->references('id')->on('productos');
             $table->timestamps();
         });
     }
