@@ -11,6 +11,9 @@
     <title>@yield('title')</title>
 </head>
 <body>
+
+@yield('content')
+
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
