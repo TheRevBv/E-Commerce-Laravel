@@ -14,17 +14,18 @@ class ProductoController extends Controller
         return view('ProductosV.productos', compact('productos'));
     }
 
+    // Get all products 2
+    public function index2()
+    {
+        $productos = Producto::all();
+        return view('ProductosV.list_productos', compact('productos'));
+    }
+
     // Get a product and edit a product
     public function show($id)
     {
         $producto = Producto::find($id);
         return view('ProductosV.editar_producto', compact('producto'));
-    }
-
-    // Create a product
-    public function create()
-    {
-        return view('ProductosV.crear_producto');
     }
 
     // Store a product
@@ -36,7 +37,7 @@ class ProductoController extends Controller
         $producto->precio = $request->precio;
         $producto->imagen = $request->imagen;
         $producto->save();
-        return redirect()->route('producto.index');
+        return redirect()->route('producto.index2')->with('success', 'Producto creado con éxito');
     }
 
     // Update a product
@@ -48,7 +49,7 @@ class ProductoController extends Controller
         $producto->precio = $request->precio;
         $producto->imagen = $request->imagen;
         $producto->save();
-        return redirect()->route('producto.index')->with('success', 'Producto actualizado');
+        return redirect()->route('producto.index2')->with('success', 'Producto actualizado');
     }
 
     // Delete a product
@@ -56,7 +57,7 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id);
         $producto->delete();
-        return redirect()->route('producto.index')->with('success', 'Producto eliminado correctamente');
+        return redirect()->route('producto.index2')->with('success', 'Producto eliminado correctamente');
     }
 }
 

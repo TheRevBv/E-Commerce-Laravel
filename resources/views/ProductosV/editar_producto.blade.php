@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container d-flex justify-content-center mt-5">
-        <form method="POST" action="/producto/{{ $producto->id }}" class="w-50 text-center">
+        <form method="POST" action="/producto-edit/{{ $producto->id }}" class="w-50 text-center">
             @csrf
             @method('PUT')
             <div class="mb-3">

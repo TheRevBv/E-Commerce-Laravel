@@ -16,10 +16,20 @@ use App\Http\Controllers\ProductoController;
 */
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [ProductoController::class, 'index'])->name('producto.index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/productos-clientes', [ProductoController::class, 'index'])->name('producto.index');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/productos', [ProductoController::class, 'index2'])->name('producto.index2');
+    Route::post('/productos', [ProductoController::class, 'store'])->name('producto.store');
+    Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('producto.show');
+    Route::put('/productos/{id}', [ProductoController::class, 'update'])->name('producto.update');
+    Route::delete('/productos/{id}', [ProductoController::class, 'destroy'])->name('producto.destroy');
+});
+
+/*Route::get('/productos', [ProductoController::class, 'index2'])->name('producto.index2');
 Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('producto.show');
-Route::delete('/producto/{id}', [ProductoController::class, 'destroy'])->name('product.destroy');
-Route::put('/producto/{id}', [ProductoController::class, 'update'])->name('product.update');
+Route::delete('/producto/{id}', [ProductoController::class, 'destroy'])->name('producto.destroy');
+Route::put('/producto-edit/{id}', [ProductoController::class, 'update'])->name('producto.update');
 Route::get('/producto', [ProductoController::class, 'create'])->name('producto.create');
-Route::post('/producto', [ProductoController::class, 'store'])->name('producto.store');
+Route::post('/producto', [ProductoController::class, 'store'])->name('producto.store');*/
