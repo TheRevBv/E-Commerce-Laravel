@@ -39,3 +39,7 @@ php artisan migrate
 ```
 php artisan serve
 ```
+Y para cargar los estilos y paquetes de Vite
+```
+npm run dev
+```
