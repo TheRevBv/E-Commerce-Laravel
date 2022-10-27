@@ -14,7 +14,14 @@ class ProductoController extends Controller
         return view('ProductosV.productos', compact('productos'));
     }
 
-    // Get all products 2
+    public function shop()
+    {
+        $products = Producto::all();
+        //dd($products);
+        return view('CarritoV.shop')->withTitle('E-COMMERCE STORE | SHOP')->with(['products' => $products]);
+    }
+
+        // Get all products 2
     public function index2()
     {
         $productos = Producto::all();
@@ -25,17 +32,17 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-        return view('ProductosV.editar_producto', compact('producto'));
+        return view('ProductosV.producto', compact('producto'));
     }
 
     // Store a product
     public function store(Request $request)
     {
         $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->imagen = $request->imagen;
+        $producto->name = $request->name;
+        $producto->price = $request->price;
+        $producto->description = $request->description;
+        $producto->image = $request->image;
         $producto->save();
         return redirect()->route('producto.index2')->with('success', 'Producto creado con éxito');
     }
@@ -44,10 +51,10 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         $producto = Producto::find($id);
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->imagen = $request->imagen;
+        $producto->name = $request->name;
+        $producto->price = $request->price;
+        $producto->description = $request->description;
+        $producto->image = $request->image;
         $producto->save();
         return redirect()->route('producto.index2')->with('success', 'Producto actualizado');
     }

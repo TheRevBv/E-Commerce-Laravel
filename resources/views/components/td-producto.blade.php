@@ -1,8 +1,9 @@
 <tr class="text-center">
     <th scope="row">{{$producto->id}}</th>
-    <td>{{$producto->nombre}}</td>
-    <td>{{$producto->descripcion}}</td>
-    <td>{{$producto->imagen}}</td>
+    <td>{{$producto->name}}</td>
+    <td>{{$producto->description}}</td>
+    <td>{{$producto->price}}</td>
+    <td>{{$producto->image}}</td>
     <td class="d-flex justify-content-evenly">
         <button class="btn btn-outline-primary" data-bs-toggle="modal"
                 data-bs-target="#editarModal">Editar
@@ -29,18 +30,18 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"
-                               value="{{$producto->nombre}}">
-                        <label for="descripcion">Descripcion</label>
-                        <textarea class="form-control" name="descripcion" id="descripcion"
-                                  rows="3">{{$producto->descripcion}}</textarea>
-                        <label for="precio">Precio</label>
-                        <input type="number" name="precio" id="precio" class="form-control" placeholder="Precio"
-                               value="{{$producto->precio}}">
-                        <label for="imagen">Imagen</label>
-                        <input type="text" name="imagen" id="imagen" class="form-control" placeholder="Imagen"
-                               value="{{$producto->imagen}}">
+                        <label for="name">Nombre</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Nombre"
+                               value="{{$producto->name}}">
+                        <label for="description">Descripcion</label>
+                        <textarea class="form-control" name="description" id="description"
+                                  rows="3">{{$producto->description}}</textarea>
+                        <label for="price">Precio</label>
+                        <input type="number" name="price" id="price" class="form-control" placeholder="Precio"
+                               value="{{$producto->price}}">
+                        <label for="image">Imagen</label>
+                        <input type="text" name="image" id="image" class="form-control" placeholder="Imagen"
+                               value="{{$producto->image}}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
