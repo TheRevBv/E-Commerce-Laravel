@@ -18,10 +18,10 @@ class ProductoController extends Controller
     {
         $products = Producto::all();
         //dd($products);
-        return view('CarritoV.shop')->withTitle('E-COMMERCE STORE | SHOP')->with(['products' => $products]);
+        return view('CarritoV.shop')->with(['products' => $products]);
     }
 
-        // Get all products 2
+    // Get all products 2
     public function index2()
     {
         $productos = Producto::all();
